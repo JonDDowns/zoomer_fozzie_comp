@@ -9,7 +9,7 @@ and `fozziejoin`. Goal is to identify use cases for each.
 
 ```sh
 git clone https://github.com/JonDDowns/zoomer_fozzie_comp
-cd ./zoomer_cozzie_comp
+cd ./zoomer_fozzie_comp
 ```
 
 ### Install fozziejoin

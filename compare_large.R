@@ -8,10 +8,14 @@ library(ggplot2)
 
 # Key parameters for the zoomerjoin function
 N_BANDS <- 350
-BAND_WIDTH <- 1
+BAND_WIDTH <- 4
+DIST_THRESH <- 0.6
+QGRAM_WIDTH <- 4
+NUM_RUNS <- 5
+NUM_THREADS <- 16
 
 # Set up sample sizes
-N <- seq(5e4, 1.1e5, 1e4)
+N <- seq(5e4, 1.3e5, 1e4)
 names(N) <- N
 
 # Retrieve from https://data.stanford.edu/dime
@@ -44,11 +48,12 @@ fozzie_jaccard_bench <- function(n) {
     data <- fozzie_string_join(dimedat[1:n, ],
       dimedat[1:n, ],
       method = "jaccard",
-      max_dist = .6,
-      q = 4,
-      by='name'
+      max_dist = DIST_THRESH,
+      q = QGRAM_WIDTH,
+      by = 'name',
+      nthread = NUM_THREADS
     ),
-    times = 5
+    times = NUM_RUNS
   )$time %>%
     median()
 
@@ -63,11 +68,14 @@ fozzie_jacard_benches$package <- "fozziejoin"
 zoomer_jaccard_bench <- function(n) {
   time <- microbenchmark(
     data <- jaccard_inner_join(dimedat[1:n, ], dimedat[1:n, ],
-      by = "name", band_width = BAND_WIDTH,
-      n_bands = N_BANDS, threshold = .7,
-      n_gram_width = 4
+      by = "name",
+      band_width = BAND_WIDTH,
+      n_bands = N_BANDS,
+      threshold = 1 - DIST_THRESH,
+      n_gram_width = QGRAM_WIDTH,
+      nthread = NUM_THREADS
     ),
-    times = 5
+    times = NUM_RUNS
   )$time %>%
     median()
 
