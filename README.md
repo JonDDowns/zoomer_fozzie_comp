@@ -5,6 +5,8 @@ and `fozziejoin`. Goal is to identify use cases for each.
 
 ## Getting Started
 
+Requires a functioning Rust toolchain and R version 4.5.
+
 ### Clone repo
 
 ```sh
@@ -12,18 +14,10 @@ git clone https://github.com/JonDDowns/zoomer_fozzie_comp
 cd ./zoomer_fozzie_comp
 ```
 
-### Install fozziejoin
-
-Open an R session to install `remotes`, then `fozziejoin`
-
-```
-install.packages('remotes')
-remotes::install_github('fozzieverse/fozziejoin/fozziejoin-r')
-```
-
 ### Use `renv` to install other packages
 
 ```r
+# install.packages('renv')
 library(renv)
 renv::restore()
 ```
