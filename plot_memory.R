@@ -1,4 +1,6 @@
 library(ggplot2)
+source("helpers.R")
+config <- load_config()
 
 # Initialize an empty list to store data frames
 data_list <- list()
@@ -15,7 +17,7 @@ for (file in files) {
 
   # Filter for 'R' commands, make other columns
   dat <- dat[dat$COMMAND == 'R', ]
-  dat$file <- file
+  dat$package <- gsub("_.*", "", file)
   row.names(dat) <- NULL
   dat$obs <- as.numeric(row.names(dat))
   dat$RSS <- as.numeric(dat$RSS) / 1024^2
@@ -29,11 +31,13 @@ for (file in files) {
 combined_data <- do.call(rbind, data_list)
 row.names(combined_data) <- NULL
 
+n <- max(config$SAMPLE_SIZE)
+
 # Plotting RSS vs Timestamp
-plt <- ggplot(combined_data, aes(x=obs, y=RSS, group=file, color=file)) +
+title <- sprintf("Memory Utilization by Second, fozziejoin and zoomerjoin (n=%d)", n)
+plt <- ggplot(combined_data, aes(x=obs, y=RSS, group=package, color=package)) +
   geom_point() + 
   geom_line() + 
-  labs(title="RSS Over Time", x="Observation number (1/sec)", y="Memory (GB)") +
+  labs(title=title, x="Seconds since script call", y="Resident Set Size (GB)") +
   theme_minimal()
-
 ggsave("results/memory_plot.png", plt)
