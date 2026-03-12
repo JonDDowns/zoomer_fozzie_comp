@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.5.2",
+    "Version": "4.5.3",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -354,11 +354,11 @@
     },
     "fozziejoin": {
       "Package": "fozziejoin",
-      "Version": "0.0.12",
+      "Version": "0.0.14",
       "Source": "GitHub",
       "Title": "Utilities for Joining Dataframes with Inexact Matching",
       "Authors@R": "c( person(\"Jon\", \"Downs\", , \"jon@jondowns.net\", role = c(\"aut\", \"cre\")), person(\"The authors of the dependency Rust crates\", role = c(\"ctb\", \"cph\"), comment = \"see inst/AUTHORS file for details\") )",
-      "Description": "Join data frames by inexact criteria, such as numeric difference and string distance.",
+      "Description": "Provides functions for joining data frames based on inexact criteria, including string distance, Manhattan distance, Euclidean distance, and interval overlap. This API is designed as a modern, performance-oriented alternative to the 'fuzzyjoin' package (Robinson 2026) <doi:10.32614/CRAN.package.fuzzyjoin>. String distance functions utilizing 'q-grams' are adapted with permission from the 'textdistance' 'Rust' crate (Orsinium 2024) <https://docs.rs/textdistance/latest/textdistance/>. Other string distance calculations rely on the 'rapidfuzz' 'Rust' crate (Bachmann 2023) <https://docs.rs/rapidfuzz/0.5.0/rapidfuzz/>. Interval joins are backed by a Adelson-Velsky and Landis tree as implemented by the 'interavl' 'Rust' crate <https://docs.rs/interavl/0.5.0/interavl/>.",
       "License": "MIT + file LICENSE",
       "Depends": [
         "R (>= 4.2)"
@@ -389,16 +389,15 @@
       "URL": "https://github.com/fozzieverse/fozziejoin",
       "BugReports": "https://github.com/fozzieverse/fozziejoin/issues",
       "SystemRequirements": "Cargo (Rust's package manager), rustc, xz",
+      "Author": "Jon Downs [aut, cre], The authors of the dependency Rust crates [ctb, cph] (see inst/AUTHORS file for details)",
+      "Maintainer": "Jon Downs <jon@jondowns.net>",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "fozziejoin",
       "RemoteUsername": "fozzieverse",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "f5ce234ff0e9ae5cd25b3c1188fb50914eb1605b",
-      "RemoteSubdir": "fozziejoin-r",
-      "NeedsCompilation": "yes",
-      "Author": "Jon Downs [aut, cre], The authors of the dependency Rust crates [ctb, cph] (see inst/AUTHORS file for details)",
-      "Maintainer": "Jon Downs <jon@jondowns.net>"
+      "RemoteRef": "6bfc724d6b972b5dfc4dae74e60e1e54f2a236e9",
+      "RemoteSha": "6bfc724d6b972b5dfc4dae74e60e1e54f2a236e9",
+      "RemoteSubdir": "fozziejoin-r"
     },
     "generics": {
       "Package": "generics",
@@ -1398,6 +1397,32 @@
       "NeedsCompilation": "no",
       "Author": "Jim Hester [aut], Lionel Henry [aut, cre], Kirill Müller [aut], Kevin Ushey [aut], Hadley Wickham [aut], Winston Chang [aut], Jennifer Bryan [ctb], Richard Cotton [ctb], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Lionel Henry <lionel@posit.co>",
+      "Repository": "CRAN"
+    },
+    "yaml": {
+      "Package": "yaml",
+      "Version": "2.3.12",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Methods to Convert R Data to YAML and Back",
+      "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"cre\", comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Shawn\", \"Garbett\", , \"shawn.garbett@vumc.org\", role = \"ctb\", comment = c(ORCID = \"0000-0003-4079-5621\")), person(\"Jeremy\", \"Stephens\", role = c(\"aut\", \"ctb\")), person(\"Kirill\", \"Simonov\", role = \"aut\"), person(\"Yihui\", \"Xie\", role = \"ctb\", comment = c(ORCID = \"0000-0003-0645-5666\")), person(\"Zhuoer\", \"Dong\", role = \"ctb\"), person(\"Jeffrey\", \"Horner\", role = \"ctb\"), person(\"reikoch\", role = \"ctb\"), person(\"Will\", \"Beasley\", role = \"ctb\", comment = c(ORCID = \"0000-0002-5613-5006\")), person(\"Brendan\", \"O'Connor\", role = \"ctb\"), person(\"Michael\", \"Quinn\", role = \"ctb\"), person(\"Charlie\", \"Gao\", role = \"ctb\"), person(c(\"Gregory\", \"R.\"), \"Warnes\", role = \"ctb\"), person(c(\"Zhian\", \"N.\"), \"Kamvar\", role = \"ctb\") )",
+      "Description": "Implements the 'libyaml' 'YAML' 1.1 parser and emitter (<https://pyyaml.org/wiki/LibYAML>) for R.",
+      "License": "BSD_3_clause + file LICENSE",
+      "URL": "https://yaml.r-lib.org, https://github.com/r-lib/yaml/",
+      "BugReports": "https://github.com/r-lib/yaml/issues",
+      "Suggests": [
+        "knitr",
+        "rmarkdown",
+        "testthat (>= 3.0.0)"
+      ],
+      "Config/testthat/edition": "3",
+      "Config/Needs/website": "tidyverse/tidytemplate",
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.3.3",
+      "VignetteBuilder": "knitr",
+      "NeedsCompilation": "yes",
+      "Author": "Hadley Wickham [cre] (ORCID: <https://orcid.org/0000-0003-4757-117X>), Shawn Garbett [ctb] (ORCID: <https://orcid.org/0000-0003-4079-5621>), Jeremy Stephens [aut, ctb], Kirill Simonov [aut], Yihui Xie [ctb] (ORCID: <https://orcid.org/0000-0003-0645-5666>), Zhuoer Dong [ctb], Jeffrey Horner [ctb], reikoch [ctb], Will Beasley [ctb] (ORCID: <https://orcid.org/0000-0002-5613-5006>), Brendan O'Connor [ctb], Michael Quinn [ctb], Charlie Gao [ctb], Gregory R. Warnes [ctb], Zhian N. Kamvar [ctb]",
+      "Maintainer": "Hadley Wickham <hadley@posit.co>",
       "Repository": "CRAN"
     },
     "zoomerjoin": {
