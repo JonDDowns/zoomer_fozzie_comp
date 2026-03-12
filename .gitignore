@@ -1,5 +1,12 @@
 *.Rds
 *.rdata
+archive/
+data/
+results/fozzie_memory.txt
+results/zoomer_memory.txt
+log.txt
+results/perf.*
+results/peak.*
 
 # History files
 .Rhistory
